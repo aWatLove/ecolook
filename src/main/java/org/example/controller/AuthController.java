@@ -71,6 +71,18 @@ public class AuthController {
                     .body(new MessageResponse("Error: Username is already taken!"));
         }
 
+        if (userRepository.existsByEmail(signupRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already taken!"));
+        }
+
+        if (userRepository.existsByPhone(signupRequest.getPhone())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Phone is already taken!"));
+        }
+
         User user = new User(signupRequest.getUsername(), signupRequest.getFirstname(), signupRequest.getLastname(), encoder.encode(signupRequest.getPassword()), signupRequest.getEmail(), signupRequest.getPhone());
 
         Role role = roleRepository.findByName(ERole.ROLE_USER).orElse(null);
