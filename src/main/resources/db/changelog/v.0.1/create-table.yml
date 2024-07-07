@@ -1,0 +1,501 @@
+databaseChangeLog:
+  - changeSet:
+      id: "create-table-roles"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "roles"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+
+              - column:
+                  name: "name"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      id: "create-table-users"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "users"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+
+              - column:
+                  name: "username"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "firstname"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "lastname"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "password"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "email"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "phone"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "role_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      id: "create-table-places"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "places"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: "title"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "description"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: true
+              - column:
+                  name: "CoordinateX"
+                  type: "DOUBLE"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "CoordinateY"
+                  type: "DOUBLE"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "photo"
+                  type: "VARCHAR[]"
+                  constraints:
+                    nullable: true
+              - column:
+                  name: "is_del"
+                  type: "BOOLEAN"
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      id: "create-table-tariffs"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "tariffs"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: "title"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "description"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: true
+              - column:
+                  name: "price_per_day"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "photo"
+                  type: "VARCHAR[]"
+                  constraints:
+                    nullable: true
+              - column:
+                  name: "is_del"
+                  type: "BOOLEAN"
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: "create-table-orders"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "orders"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: "user_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "place_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "tariff_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "date_start"
+                  type: "TIMESTAMP"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "date_end"
+                  type: "TIMESTAMP"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "days_count"
+                  type: "INT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "status"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "payment_status"
+                  type: "VARCHAR"
+                  defaultValue: "Не оплачено"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "total_price"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: "create-table-tags"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "tags"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: "name"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "is_del"
+                  type: "BOOLEAN"
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      id: "create-table-additional-options"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "additional_options"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: "title"
+                  type: "VARCHAR"
+                  constraints:
+                    deleteCascade: true
+                    nullable: false
+              - column:
+                  name: "price"
+                  type: "BIGINT"
+                  constraints:
+                    deleteCascade: true
+                    nullable: false
+              - column:
+                  name: "is_del"
+                  type: "BOOLEAN"
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: "create-table-order_add_options"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "order_add_options"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: "order_id"
+                  type: "BIGINT"
+                  constraints:
+                    deleteCascade: true
+                    nullable: false
+              - column:
+                  name: "option_id"
+                  type: "BIGINT"
+                  constraints:
+                    deleteCascade: true
+                    nullable: false
+              - column:
+                  name: "count"
+                  type: "BIGINT"
+                  constraints:
+                    deleteCascade: true
+                    nullable: false
+
+  - changeSet:
+      id: "create-table-place_tags"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "place_tags"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: "place_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "tag_id"
+                  type: "BIGINT"
+                  constraints:
+                    deleteCascade: true
+                    nullable: false
+
+  - changeSet:
+      id: "create-table-place_tariffs"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "place_tariffs"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: "place_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "tariff_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      id: "create-table-change_orders"
+      author: "awatlove"
+      changes:
+        - createTable:
+            tableName: "change_orders"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: "order_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "operator_id"
+                  type: "BIGINT"
+                  constraints:
+                    nullable: false
+              - column:
+                  name: "old_status"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: true
+              - column:
+                  name: "new_status"
+                  type: "VARCHAR"
+                  constraints:
+                    nullable: true
+              - column:
+                  name: "date"
+                  type: "TIMESTAMP"
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      author: "awatlove"
+      id: "add_fk_constraint"
+      changes:
+        #        users
+        - addForeignKeyConstraint:
+            baseTableName: "users"
+            baseColumnNames: "role_id"
+            constraintName: "fk_users_roles"
+            referencedTableName: "roles"
+            referencedColumnNames: "id"
+        #        orders
+        - addForeignKeyConstraint:
+            baseTableName: "orders"
+            baseColumnNames: "user_id"
+            constraintName: "fk_orders_users"
+            referencedTableName: "users"
+            referencedColumnNames: "id"
+        - addForeignKeyConstraint:
+            baseTableName: "orders"
+            baseColumnNames: "place_id"
+            constraintName: "fk_orders_places"
+            referencedTableName: "places"
+            referencedColumnNames: "id"
+        - addForeignKeyConstraint:
+            baseTableName: "orders"
+            baseColumnNames: "tariff_id"
+            constraintName: "fk_orders_tariffs"
+            referencedTableName: "tariffs"
+            referencedColumnNames: "id"
+        #         change_orders
+        - addForeignKeyConstraint:
+            baseTableName: "change_orders"
+            baseColumnNames: "operator_id"
+            constraintName: "fk_change_orders_users"
+            referencedTableName: "users"
+            referencedColumnNames: "id"
+        - addForeignKeyConstraint:
+            baseTableName: "change_orders"
+            baseColumnNames: "order_id"
+            constraintName: "fk_change_orders_orders"
+            referencedTableName: "orders"
+            referencedColumnNames: "id"
+        #            place_tariffs
+        - addForeignKeyConstraint:
+            baseTableName: "place_tariffs"
+            baseColumnNames: "place_id"
+            constraintName: "fk_place_tariffs_places"
+            referencedTableName: "places"
+            referencedColumnNames: "id"
+        - addForeignKeyConstraint:
+            baseTableName: "place_tariffs"
+            baseColumnNames: "tariff_id"
+            constraintName: "fk_place_tariffs_tariffs"
+            referencedTableName: "tariffs"
+            referencedColumnNames: "id"
+        #            order_add_options
+        - addForeignKeyConstraint:
+            baseTableName: "order_add_options"
+            baseColumnNames: "option_id"
+            constraintName: "fk_order_add_options_additional_options"
+            referencedTableName: "additional_options"
+            referencedColumnNames: "id"
+        - addForeignKeyConstraint:
+            baseTableName: "order_add_options"
+            baseColumnNames: "order_id"
+            constraintName: "fk_order_add_options_orders"
+            referencedTableName: "orders"
+            referencedColumnNames: "id"
+        #           place_tags
+        - addForeignKeyConstraint:
+            baseTableName: "place_tags"
+            baseColumnNames: "place_id"
+            constraintName: "fk_place_tags_places"
+            referencedTableName: "places"
+            referencedColumnNames: "id"
+        - addForeignKeyConstraint:
+            baseTableName: "place_tags"
+            baseColumnNames: "tag_id"
+            constraintName: "fk_place_tags_tags"
+            referencedTableName: "tags"
+            referencedColumnNames: "id"
