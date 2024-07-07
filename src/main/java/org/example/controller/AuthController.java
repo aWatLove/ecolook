@@ -1,10 +1,9 @@
 package org.example.controller;
 
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.example.dto.payment.request.auth.SigninRequest;
 import org.example.dto.payment.request.auth.SignupRequest;
 import org.example.dto.payment.response.user.JwtResponse;
-import org.example.dto.payment.response.user.MessageResponse;
+import org.example.dto.payment.response.MessageResponse;
 import org.example.model.ERole;
 import org.example.model.Role;
 import org.example.model.User;
@@ -14,7 +13,6 @@ import org.example.security.jwt.JwtUtils;
 import org.example.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

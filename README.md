@@ -140,11 +140,11 @@ output:
 	"token":"eyJhbGciOiJIUzUxMiJ9",
     "type": "Bearer",
     "id": 3,
-    "username": "root",
-    "firstname": "root",
-    "lastname": "root", 
-    "email": "root@asd.ru",
-    "role": "ROLE_ADMIN"
+    "username": "username",
+    "firstname": "username",
+    "lastname": "username", 
+    "email": "username@asd.ru",
+    "role": "ROLE_USER"
 }
 ```
 
@@ -165,8 +165,8 @@ output:
 ```
 
 
-### PUT update user details
-`PUT /api/user`
+### PATCH update user details
+`PATCH /api/user`
 **auth**
 
 input:

@@ -1,4 +1,4 @@
-package org.example.dto.payment.response.user;
+package org.example.dto.payment.response;
 
 public class MessageResponse {
     private String message;
