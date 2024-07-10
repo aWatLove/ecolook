@@ -475,10 +475,47 @@ output:
 }
 ```
 
-### GET user order previews
-`GET /api/order/user/:username`
+### GET users by user_id order previews. for Admin
+`GET /api/order/user/:id`
+
+**auth admin**
 
 input: username - string
+
+output:
+```json
+{
+	"orders":[
+		{
+			"id":0,
+			"place":{
+				"id":0,
+				"title":"title"
+			},
+			"status":"На месте",
+			"payment_status":"Оплачено",
+			"days_count":5,
+			"total_price":25600.0
+		},
+		{
+			"id":1,
+			"place":{
+				"id":1,
+				"title":"title"
+			},
+			"status":"В пути",
+			"payment_status":"Оплачено",
+			"days_count":2,
+			"total_price":16300.0
+		}
+	]
+}
+```
+
+### GET user order previews. for User
+`GET /api/order`
+
+input: 
 
 output:
 ```json
