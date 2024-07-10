@@ -35,6 +35,9 @@ public class TagService {
     }
 
     public TagDTO createTag(String name) {
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("name cant be empty");
+        }
         Tag tag = new Tag();
         tag.setName(name);
         tag = tagRepository.saveAndFlush(tag);

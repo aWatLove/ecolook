@@ -248,7 +248,7 @@ Output:
 			"id":1,
 			"title":"title1",
 			"description":"desc",
-			"price_per_day":5000, 
+			"price_per_day":5000.0, 
 			"photo":"url1"
 		}
 	], 
@@ -292,7 +292,7 @@ Output:
 			"id":1,
 			"title":"title1",
 			"description":"desc",
-			"price_per_day":5000, 
+			"price_per_day":5000.0, 
 			"photo":"url" 
 		}
 	], 
@@ -342,7 +342,7 @@ Output:
 			"id":1,
 			"title":"title1",
 			"description":"desc",
-			"price_per_day":5000, 
+			"price_per_day":5000.0, 
 			"photo":"url" 
 		}
 	], 
@@ -398,7 +398,7 @@ output:
 		"id":0,
 		"title":"title",
 		"description":"description",
-		"price_per_day":5000
+		"price_per_day":5000.0
 	},
 	"days_count":5,
 	"status":"Обрабатывается",
@@ -408,17 +408,17 @@ output:
 		{
 			"id":0,
 			"title":"opt0",
-			"price":200,
+			"price":200.0,
 			"count":1
 		},
 		{
 			"id":2,
 			"title":"opt2",
-			"price":100,
+			"price":100.0,
 			"count":4
 		}
 	],
-	"total_price":25600,
+	"total_price":25600.0,
 	"payment_status":"Не оплачено"
 }
 ```
@@ -450,7 +450,7 @@ output:
 		"id":0,
 		"title":"title",
 		"description":"description",
-		"price_per_day":5000
+		"price_per_day":5000.0
 	},
 	"days_count":5,
 	"status":"Обрабатывается",
@@ -460,17 +460,17 @@ output:
 		{
 			"id":0,
 			"title":"opt0",
-			"price":200,
+			"price":200.0,
 			"count":1
 		},
 		{
 			"id":2,
 			"title":"opt2",
-			"price":100,
+			"price":100.0,
 			"count":4
 		}
 	],
-	"total_price":25600,
+	"total_price":25600.0,
 	"payment_status":"Не оплачено"
 }
 ```
@@ -493,7 +493,7 @@ output:
 			"status":"На месте",
 			"payment_status":"Оплачено",
 			"days_count":5,
-			"total_price":25600
+			"total_price":25600.0
 		},
 		{
 			"id":1,
@@ -504,7 +504,7 @@ output:
 			"status":"В пути",
 			"payment_status":"Оплачено",
 			"days_count":2,
-			"total_price":16300
+			"total_price":16300.0
 		}
 	]
 }
@@ -548,21 +548,21 @@ output:
 			"id":0,
 			"title":"title0",
 			"description":"description0",
-			"price_per_day":500,
+			"price_per_day":500.0,
 			"photo":"url0"
 		},
 		{
 			"id":1,
 			"title":"title1",
 			"description":"description1",
-			"price_per_day":400,
+			"price_per_day":400.0,
 			"photo":"url1"
 		},
 		{
 			"id":2,
 			"title":"title2",
 			"description":"description2",
-			"price_per_day":50000,
+			"price_per_day":50000.0,
 			"photo":"url2"
 		}
 	]
@@ -579,7 +579,7 @@ input:
 {
 	"title":"title2",
 	"description":"description2",
-	"price_per_day":50000,
+	"price_per_day":50000.0,
 	"photo":"url2"
 }
 ```
@@ -590,7 +590,7 @@ output:
 	"id":2,
 	"title":"title2",
 	"description":"description2",
-	"price_per_day":50000,
+	"price_per_day":50000.0,
 	"photo":"url2"
 }
 ```
@@ -606,7 +606,7 @@ input: id - int
 {
 	"title":"title2",
 	"description":"description2",
-	"price_per_day":50000,
+	"price_per_day":50000.0,
 	"photo":"url2"
 }
 ```
@@ -617,7 +617,7 @@ output:
 	"id":2,
 	"title":"title2",
 	"description":"description2",
-	"price_per_day":50000,
+	"price_per_day":50000.0,
 	"photo":"url2"
 }
 ```
@@ -641,21 +641,21 @@ input: -
 output:
 ```json
 {
-	"optionals":[
+	"options":[
 		{
 			"id":0,
 			"title":"title0",
-			"price":200
+			"price":200.0
 		},
 		{
 			"id":1,
 			"title":"title1",
-			"price":100
+			"price":100.0
 		},
 		{
 			"id":2,
 			"title":"title2",
-			"price":400
+			"price":400.0
 		}
 	]
 }
@@ -666,19 +666,18 @@ output:
 **auth admin**
 
 input:
-```json
-{
-	"title":"title",
-	"price":200
-}
-```
+
+Query:
+- title - string
+- price - double
+
 
 output:
 ```json
 {
 	"id":2,
 	"title":"title2",
-	"price":400
+	"price":400.0
 }
 ```
 
@@ -692,7 +691,7 @@ input: id - int
 ```json
 {
 	"title":"title",
-	"price":200
+	"price":200.0
 }
 ```
 
@@ -701,7 +700,7 @@ output:
 {
 	"id":2,
 	"title":"title2",
-	"price":400
+	"price":400.0
 }
 ```
 
