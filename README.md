@@ -222,7 +222,7 @@ Output:
 ```
 
 ### GET place by id
-`GET /api/place/:id
+`GET /api/place/:id`
 
 **auth**
 
@@ -306,8 +306,6 @@ Output:
 
 **auth admin**
 
-
-
 если `tags` или `tariffs` пустые, то удалятся 
 
 Input:
@@ -353,12 +351,12 @@ Output:
 ```
 
 ### DELETE place
-`DELETE /admin/api/place/:id`
+`DELETE /api/place/:id`
+
 **auth admin**
 
 Input: `id - int`
 
-Удаляться из бд не будет
 Soft delete
 
 Output: 200 ok
@@ -513,7 +511,8 @@ output:
 ```
 
 ### PATCH поменять статус order'а
-`PATCH /admin/api/order/:id/process`
+`PATCH /api/order/:id/process`
+
 **auth admin**
 
 query: 
@@ -522,6 +521,7 @@ query:
 
 ### PATCH отменить заказ
 `PATCH /api/order/:id/cancel`
+
 **auth**
 
 input: id - int
@@ -533,9 +533,13 @@ ok или не ок
 ### Оплата, посмотреть сервисы оплаты и как это можно обработать на беке
 -> меняется статус оплаты в Order'е
 
+
+## Tarrif
 ### GET all tariffs
 `GET /api/tariff`
+
 input: -
+
 output:
 ```json
 {
@@ -566,7 +570,8 @@ output:
 ```
 
 ### POST create tariff
-`POST /admin/api/tariff`
+`POST /api/tariff`
+
 **auth admin**
 
 input:
@@ -591,9 +596,12 @@ output:
 ```
 
 ### PATCH update tariff
-`PATCH /admin/api/tariff/:id`
+`PATCH /api/tariff/:id`
+
+**auth admin**
 
 input: id - int
+
 ```json
 {
 	"title":"title2",
@@ -615,15 +623,18 @@ output:
 ```
 
 ### DELETE delete tariff
-`DELETE /admin/api/tariff/:id`
+`DELETE /api/tariff/:id`
+
+**auth admin**
 
 input: id - int
 
 output: ok 200
 
 
-### GET all optionals
-`GET /api/optional`
+## Options
+### GET all options
+`GET /api/option`
 
 input: -
 
@@ -650,8 +661,8 @@ output:
 }
 ```
 
-### POST create optional
-`POST /admin/api/optional`
+### POST create option
+`POST /api/option`
 **auth admin**
 
 input:
@@ -672,11 +683,12 @@ output:
 ```
 
 
-### PATCH update optional
-`PATCH /admin/api/optional/:id`
+### PATCH update option
+`PATCH /api/option/:id`
 **auth admin**
 
 input: id - int
+
 ```json
 {
 	"title":"title",
@@ -693,17 +705,18 @@ output:
 }
 ```
 
-### DELETE optional
-`DELETE /admin/api/optional/:id`
+### DELETE option
+`DELETE /admin/api/option/:id`
 
 input: id - int
 output: ok
 
-
+## Tag
 ### GET all tags
 `GET /api/tag`
 
 input: - 
+
 output:
 ```json
 {
@@ -725,8 +738,10 @@ output:
 ```
 
 ### POST tag
-`POST /admin/api/tag`
+`POST /api/tag`
+
 **auth admin**
+
 input:
 ```json
 {
@@ -743,7 +758,8 @@ output:
 ```
 
 ### DELETE tag
-`DELETE /admin/api/tag/:id`
+`DELETE /api/tag/:id`
+
 **auth admin**
 
 input: id - int 
