@@ -706,7 +706,7 @@ output:
 ```
 
 ### DELETE option
-`DELETE /admin/api/option/:id`
+`DELETE /api/option/:id`
 
 input: id - int
 output: ok
@@ -743,11 +743,8 @@ output:
 **auth admin**
 
 input:
-```json
-{
-	"name":"tag1"
-}
-```
+
+Query: `name - string`
 
 output:
 ```json
