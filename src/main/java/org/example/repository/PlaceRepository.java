@@ -15,7 +15,7 @@ public interface PlaceRepository extends JpaRepository<Place, Long> {
 
     @Query("SELECT p " +
             "FROM Place p " +
-            "WHERE 6371 * acos(cos(radians(:latitude)) * cos(radians(p.CoordinateX)) * cos(radians(p.CoordinateY) - radians(:longitude)) + sin(radians(:latitude)) * sin(radians(p.CoordinateX))) <= :radius")
+            "WHERE 6371 * acos(cos(radians(:latitude)) * cos(radians(p.CoordinateX)) * cos(radians(p.CoordinateY) - radians(:longitude)) + sin(radians(:latitude)) * sin(radians(p.CoordinateX))) <= :radius AND p.isDel is FALSE")
     List<Place> findPlacesWithinRadius(@Param("latitude") double latitude,
                                        @Param("longitude") double longitude,
                                        @Param("radius") double radius);

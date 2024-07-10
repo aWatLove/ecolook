@@ -223,9 +223,13 @@ Output:
 
 ### GET place by id
 `GET /api/place/:id
+
 **auth**
 
-Input: id - int
+Input:
+
+Path: `id - Long`
+
 Output:
 ```json
 {
@@ -253,7 +257,8 @@ Output:
 ```
 
 ### POST create place
-`POST /admin/api/place`
+`POST /api/place`
+
 **auth admin**
 
 Input:
@@ -265,11 +270,7 @@ Input:
 	"YCoordinate":12.1489,
 	"tags":[1, 5, 4], 
 	"tariffs":[1, 2, 3, 4, 7],
-	"photos":[
-		"url1", 
-		"url2", 
-		"url3"
-	]
+	"photo":"url1"
 }
 ```
 
@@ -295,21 +296,24 @@ Output:
 			"photo":"url" 
 		}
 	], 
-	"photos":[
-		"url1", 
-		"url2", 
-		"url3"
-	]
+	"photo":"url1"
 }
 ```
 
  
 ### PATCH update place info
-`PATCH /admin/api/place/:id`
+`PATCH /api/place/:id`
+
 **auth admin**
-`id - int`
+
+
+
+если `tags` или `tariffs` пустые, то удалятся 
 
 Input:
+
+Path: `id - int`
+
 ```json
 {
 	"title":"new plave title",
@@ -318,11 +322,7 @@ Input:
 	"YCoordinate":12.1489,
 	"tags":[1, 5, 4], 
 	"tariffs":[1, 2, 3, 4, 7],
-	"photos":[
-		"url1", 
-		"url2", 
-		"url3"
-	]
+	"photos":"url1"
 }
 ```
 
@@ -348,11 +348,7 @@ Output:
 			"photo":"url" 
 		}
 	], 
-	"photos":[
-		"url1", 
-		"url2", 
-		"url3"
-	]
+	"photos":"url1"
 }
 ```
 
