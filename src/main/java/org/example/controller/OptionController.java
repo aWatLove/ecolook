@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/option")
-public class OptionsController {
+public class OptionController {
     @Autowired
     OptionService optionService;
 

@@ -14,7 +14,6 @@ public class TariffDTO {
     private Double pricePerDay;
     private String photo;
 
-    // Constructor for the query
     public TariffDTO(Long id, String title, String description, Double pricePerDay, String photo) {
         this.id = id;
         this.title = title;
