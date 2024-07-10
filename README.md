@@ -21,9 +21,9 @@ Places
 - id
 - title
 - description
-- CoordinateX
-- CoordinateY
-- photo (URLS фотографий)
+- coordinatex
+- coordinatey
+- photo (URL фотографий)
 - is_del
 
 
@@ -33,7 +33,7 @@ Tariffs
 - title
 - description
 - price_per_day
-- photo (URLS фотографий)
+- photo (URL фотографий)
 - is_del
 
 ## Заказы
@@ -197,10 +197,9 @@ output:
 
 Input: 
 Query:
-- Xcoordinate
-- Ycoordinate
-- radius - в километрах (default 50)
-- tags фильтр по тегам делать? 
+- XСoordinate - Double
+- YСoordinate - Double
+- radius - Double. в километрах (default 50)
 
 Output:
 ```json
@@ -210,21 +209,13 @@ Output:
 			"id":0, 
 			"title":"some place 0",
 			"XCoordinate":56.2853,
-			"YCoordinate":42.0971,
-			"tags":[
-				"Горный отдых", 
-				"у реки"
-			]
+			"YCoordinate":42.0971
 		  },
 	  { 
 			"id":1, 
 			"title":"some place 1", 
 			"XCoordinate":36.2853, 
-			"YCoordinate":52.0971,
-			"tags":[
-				"у реки", 
-				"В лесу"
-			]
+			"YCoordinate":52.0971
 		}
 	]
 }
@@ -254,14 +245,10 @@ Output:
 			"title":"title1",
 			"description":"desc",
 			"price_per_day":5000, 
-			"photo":"url" 
+			"photo":"url1"
 		}
 	], 
-	"photos":[
-		"url1", 
-		"url2", 
-		"url3"
-	]
+	"photo":"url1"
 }
 ```
 

@@ -99,18 +99,18 @@ databaseChangeLog:
                   constraints:
                     nullable: true
               - column:
-                  name: "CoordinateX"
+                  name: "coordinatex"
                   type: "DOUBLE"
                   constraints:
                     nullable: false
               - column:
-                  name: "CoordinateY"
+                  name: "coordinatey"
                   type: "DOUBLE"
                   constraints:
                     nullable: false
               - column:
                   name: "photo"
-                  type: "VARCHAR[]"
+                  type: "VARCHAR"
                   constraints:
                     nullable: true
               - column:
@@ -153,7 +153,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: "photo"
-                  type: "VARCHAR[]"
+                  type: "VARCHAR"
                   constraints:
                     nullable: true
               - column:
