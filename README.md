@@ -385,12 +385,12 @@ output:
 		"username":"username0",
 		"firstname":"vlad",
 		"lastname":"suvorov",
+        "email":"mail@mail.ru",
 		"phone":"89528120252"
 	},
 	"place":{
 		"id":0,
 		"title":"sometitle",
-		"description":"description",
 		"XCoordinate":52.2552,
 		"YCoordinate":52.5252
 	},
@@ -398,13 +398,14 @@ output:
 		"id":0,
 		"title":"title",
 		"description":"description",
-		"price_per_day":5000.0
+		"price_per_day":5000.0,
+        "photo":"url"
 	},
 	"days_count":5,
 	"status":"Обрабатывается",
 	"date_start":"2017-03-12T13:37:27+00:00",
 	"date_end":"2017-03-17T13:37:27+00:00",
-	"additional_oprions":[
+	"additional_options":[
 		{
 			"id":0,
 			"title":"opt0",
@@ -551,6 +552,7 @@ output:
 `PATCH /api/order/:id/process`
 
 **auth admin**
+input: id - int
 
 query: 
 - status
@@ -563,8 +565,6 @@ query:
 
 input: id - int
 
-output:
-ok или не ок
 
 
 ### Оплата, посмотреть сервисы оплаты и как это можно обработать на беке
