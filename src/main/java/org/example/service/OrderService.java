@@ -133,5 +133,6 @@ public class OrderService {
     public void changeStatus(Long id, String status) {
         Order order = orderRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         order.setStatus(EStatus.valueOf(status).getTitle());
+        orderRepository.saveAndFlush(order);
     }
 }
