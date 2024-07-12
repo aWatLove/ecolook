@@ -102,6 +102,10 @@ Additonal Options
 
 # Эндпоинты 
 
+### Авторизация через:
+
+**Authorization: Bearer {token}**
+
 ## Авторизация
 ### POST sign up
 `POST /api/auth/signup`
