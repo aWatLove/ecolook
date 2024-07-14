@@ -376,7 +376,8 @@ input:
 	"place_id":1,
 	"days_count":5,
 	"tarrif_id":0,
-	"optional_ids":[0,2]
+	"optional_ids":[0,2],
+    "date":"2017-03-12T13:37:27+00:00"
 }
 ```
 

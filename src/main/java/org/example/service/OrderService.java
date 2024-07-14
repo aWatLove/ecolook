@@ -10,9 +10,7 @@ import org.example.dto.payment.response.place.PlacePreviewDTOOrder;
 import org.example.dto.payment.response.tariff.TariffDTO;
 import org.example.dto.payment.response.user.UserInfoDTO;
 import org.example.model.*;
-import org.example.repository.OptionRepository;
-import org.example.repository.OrderOptionRepository;
-import org.example.repository.OrderRepository;
+import org.example.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,9 +27,17 @@ public class OrderService {
     OrderOptionRepository orderOptionRepository;
 
     @Autowired
+    UserRepository userRepository;
+    @Autowired
+    TariffRepository tariffRepository;
+    @Autowired
+    PlaceRepository placeRepository;
+
+    @Autowired
     OptionRepository optionRepository;
 
     public OrderResponse createOrder(Long userId, OrderCreateRequest body) {
+        System.out.println(body);
         if (body.getPlaceId() == null || body.getTariffId() == null || body.getDaysCount() == null || body.getDaysCount() < 1) {
             throw new IllegalArgumentException();
         }
@@ -45,9 +51,15 @@ public class OrderService {
         Place place = new Place();
         place.setId(body.getPlaceId());
         order.setPlace(place);
-        order = orderRepository.saveAndFlush(order);
         order.setStatus(EStatus.IN_PROGRESS.getTitle());
         order.setPaymentStatus(EPaymentStatus.PAYMENT_NO.getTitle());
+        order.setDateStart(body.getDate());
+        order.setDateEnd(body.getDate().plusDays(body.getDaysCount()));
+        order.setDaysCount(body.getDaysCount());
+        order.setTotalPrice(0L);
+        order = orderRepository.saveAndFlush(order);
+        tariff = tariffRepository.getById(body.getTariffId());
+        Long totalPrice = ((long) tariff.getPricePerDay() * body.getDaysCount());
 
         for(Long optionId : body.getOptionalIds()) {
             Option opt = optionRepository.findById(optionId).orElse(null);
@@ -56,14 +68,19 @@ public class OrderService {
                 oo.setCount(1L);
                 oo.setOrder(order);
                 oo.setOption(opt);
+                orderOptionRepository.saveAndFlush(oo);
+                totalPrice += opt.getPrice();
             }
         }
+        order.setTotalPrice(totalPrice);
+        order = orderRepository.saveAndFlush(order);
 
         return getOrderById(order.getId());
     }
 
     public OrderResponse getOrderById(Long id) {
         Order order = orderRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        order.setUser(userRepository.getById(order.getUser().getId()));
         OrderResponse resp = new OrderResponse();
         resp.setId(order.getId());
         resp.setDaysCount(order.getDaysCount());
@@ -82,7 +99,8 @@ public class OrderService {
         user.setEmail(order.getUser().getEmail());
         resp.setUser(user);
 
-        TariffDTO tariff = new TariffDTO(resp.getTariff().getId(), resp.getTariff().getTitle(), resp.getTariff().getDescription(), resp.getTariff().getPricePerDay(), resp.getTariff().getPhoto());
+        order.setTariff(tariffRepository.getById(order.getTariff().getId()));
+        TariffDTO tariff = new TariffDTO(order.getTariff().getId(), order.getTariff().getTitle(), order.getTariff().getDescription(), (double) order.getTariff().getPricePerDay() /100, order.getTariff().getPhoto());
         resp.setTariff(tariff);
 
         List<OrderOption> orderOptions = orderOptionRepository.findByOrderId(id);
@@ -98,7 +116,8 @@ public class OrderService {
                 options.add(od);
             }
         }
-
+        resp.setAdditionalOptions(options);
+        order.setPlace(placeRepository.getById(order.getPlace().getId()));
         PlacePreviewDTO place = new PlacePreviewDTO(order.getPlace().getId(), order.getPlace().getTitle(), order.getPlace().getCoordinateX(), order.getPlace().getCoordinateY());
         resp.setPlace(place);
 

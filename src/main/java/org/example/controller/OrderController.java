@@ -43,7 +43,7 @@ public class OrderController {
 
     @SecurityRequirement(name = "JWT")
     @PostMapping
-    public ResponseEntity<?> createOrder(OrderCreateRequest body, HttpServletRequest request) {
+    public ResponseEntity<?> createOrder(@RequestBody OrderCreateRequest body, HttpServletRequest request) {
         Long userId = jwtUtils.getUserIdFromJwtToken(jwtUtils.extractJwtToken(request));
         return ResponseEntity.ok(orderService.createOrder(userId, body));
     }
