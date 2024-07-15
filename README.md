@@ -562,6 +562,13 @@ input: id - int
 query: 
 - status
 
+Statuses:
+1. IN_PROGRESS - "Обрабатывается"
+2. ON_THE_WAY - "В пути"
+3. DELIVERED - "Доставлено"
+4. CANCELED - "Отменено"
+5. ERROR - "Ошибка"
+
 
 ### PATCH отменить заказ
 `PATCH /api/order/:id/cancel`

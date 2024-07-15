@@ -51,7 +51,7 @@ public class OrderController {
     @SecurityRequirement(name = "JWT")
     @PatchMapping("/{id}/cancel")
     public ResponseEntity<?> cancelOrder(@PathVariable Long id) {
-        orderService.changeStatus(id, EStatus.CANCELED.getTitle());
+        orderService.changeStatus(id, "CANCELED");
         return ResponseEntity.ok().build();
     }
 
